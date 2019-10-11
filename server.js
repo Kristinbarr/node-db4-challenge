@@ -21,10 +21,7 @@ server.get('/api/recipes', (req, res) => {
 
 server.get('/api/ingredients', (req, res) => {
   // get all ingredients from the database
-  // include recipe name
-  db('ingredients as i')
-    .leftJoin('recipes as r', 'r.id', 'i.recipes_id')
-    .select('i.id', 'i.ingredients_name', 'r.recipes_name')
+  db('ingredients')
     .then((ingredients) => {
       res.status(200).json(ingredients)
     })
@@ -34,8 +31,8 @@ server.get('/api/ingredients', (req, res) => {
 })
 
 // add ingredient
-server.post('/api/ingredient', (req, res) => {
-  db('ingredient')
+server.post('/api/ingredients', (req, res) => {
+  db('ingredients')
     .insert(req.body)
     .then((ids) => {
       const id = ids[0]
