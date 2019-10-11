@@ -14,12 +14,12 @@ module.exports = {
     seeds: {
       directory: './data/seeds'
     },
-    pool: {
-      afterCreate: (conn, done) => {
-        // enforces foreign key constraints on SQLite, not needed for other DBMS
-        conn.run('PRGMA foreign_keys = ON', done)
-      }
-    }
+    // pool: {
+    //   afterCreate: (conn, done) => {
+    //     // enforces foreign key constraints on SQLite, not needed for other DBMS
+    //     conn.run('PRAGMA foreign_keys = ON', done)
+    //   }
+    // }
   },
 
   staging: {
